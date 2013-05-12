@@ -1,12 +1,6 @@
 " Enabled later, after Pathogen
 filetype off
 
-" Local dirs
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-set undodir=~/.vim/undo
-
-
 set cursorline " Highlight current line
 
 set formatoptions=
@@ -27,7 +21,6 @@ nnoremap <C-y> 3<C-y>
 set relativenumber " Use relative line numbers. Current line is still in status bar.
 au BufReadPost,BufNewFile * set relativenumber
 
-call pathogen#infect()
 set autoindent
 set history=50
 set ruler
