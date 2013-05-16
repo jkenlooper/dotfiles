@@ -34,6 +34,23 @@ set expandtab
 " All line endings are unix
 set fileformat=unix
 
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Don't create swp files
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Status bar
+set laststatus=2
+if has('statusline')
+  set statusline=%<%f\
+  set statusline+=%w%h%m%r
+  set statusline+=%{fugitive#statusline()}
+  set statusline+=\ [%{getcwd()}]
+  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+endif
 
 map \r :%s/\t/  /g<CR>| "convert tabs to spaces)
 map \m :%s/<C-V><CR>$//g<CR>:%s/<C-V><CR>/\r/g<CR>| "replace ^M with returns (use if mixed with newlines)
@@ -62,8 +79,11 @@ au FileType javascript setl nocindent
 
 syntax enable
 set background=dark
-" colorscheme solarized
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 execute pathogen#infect()
 filetype plugin indent on
+
+runtime macros/matchit.vim
+
+colorscheme solarized

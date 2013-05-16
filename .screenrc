@@ -1,6 +1,6 @@
 startup_message off
 
-#blankerprg nice -n 19 cmatrix -a -C black -b -s -u3
+blankerprg nice -n 19 cmatrix -a -C black -b -s -u3
 
 #idle 600 lockscreen
 
