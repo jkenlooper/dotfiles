@@ -3,6 +3,10 @@
 
 # set 256 color term
 export TERM=xterm-256color
+#export TERM=xterm-color
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # don't put duplicate lines in the history. See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -43,6 +47,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 PATH="/usr/local/bin:$PATH"
+export PATH=/usr/local/share/npm/bin:$PATH
+export PATH=/usr/local/share/python:$PATH
 
 if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
