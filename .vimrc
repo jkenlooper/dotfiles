@@ -45,11 +45,11 @@ set noswapfile
 " Status bar
 set laststatus=2
 if has('statusline')
-  set statusline=%<%f\
+  set statusline=%<%f
   set statusline+=%w%h%m%r
-  set statusline+=%{fugitive#statusline()}
-  set statusline+=\ [%{getcwd()}]
-  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+  " set statusline+=%{fugitive#statusline()}
+  " set statusline+=\ [%{getcwd()}]
+  " set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 endif
 
 map \r :%s/\t/  /g<CR>| "convert tabs to spaces)
@@ -85,5 +85,8 @@ execute pathogen#infect()
 filetype plugin indent on
 
 runtime macros/matchit.vim
+
+let g:ycm_complete_in_comments = 1
+let g:ycm_min_num_of_chars_for_completion = 2
 
 colorscheme solarized
