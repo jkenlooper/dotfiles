@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Init the submodules
-git submodule init;
-git submodule update;
-
-# Install pathogen.vim
-mkdir -p ~/.vim/autoload ~/.vim/bundle;
-curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim;
+# Create aliases in HOME replacing any existing
+for f in {bash_aliases,bashrc,screenrc,vim,vimrc,xinitrc}; do
+	if [ -f $HOME/.$f -o -d $HOME/.$f ]; then 
+		mv $HOME/.$f $HOME/.$f.old;
+	fi
+	ln -s $PWD/$f $HOME/.$f;
+done;
