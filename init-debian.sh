@@ -22,9 +22,10 @@ sudo apt-get install sqlite3 python-sqlite
 sudo apt-get install optipng
 
 #nodejs and npm
-aptitude -t wheezy-backports install nodejs
-update-alternatives --install /usr/bin/node nodejs /usr/bin/nodejs 100;
-curl https://www.npmjs.org/install.sh | sudo sh;
+# See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
+curl -sL https://deb.nodesource.com/setup | sudo bash -;
+
+sudo apt-get install nodejs
 
 #jq
 
