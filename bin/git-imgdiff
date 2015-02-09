@@ -1,0 +1,9 @@
+#!/bin/bash
+tempout=`mktemp -t git-imgdiff`;
+compare $2 $1 ${tempout};
+
+# mac os
+#qlmanage -p ${tempout} $2 $1;
+
+# debian 
+geeqie -s -t ${tempout};

@@ -1,0 +1,21 @@
+[user]
+	name = Jake Hickenlooper
+	email = jake@weboftomorrow.com
+[alias]
+  st = status
+  co = checkout
+	graphlog = log --graph --color --decorate --pretty=oneline --abbrev-commit
+
+[color]
+  status = true
+	ui = true
+
+[core]
+  excludesFile = ~/.git_global_ignore
+	attributesfile = ~/.gitattributes
+
+[diff "image"]
+	command = ~/bin/git-imgdiff
+
+[diff "mincss"]
+	textconv = cssunminifier

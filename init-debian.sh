@@ -20,12 +20,32 @@ sudo apt-get install build-essential cmake python-dev;
 # Install more stuff for web development
 sudo apt-get install sqlite3 python-sqlite
 sudo apt-get install optipng
+sudo apt-get install geeqie
 
 #nodejs and npm
 # See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
 curl -sL https://deb.nodesource.com/setup | sudo bash -;
 
 sudo apt-get install nodejs
+
+# Setup npm to use a different directory for global installs
+mkdir -p $HOME/bin/npm-global;
+npm config set prefix '~/bin/npm-global';
+
+npm install -g uglify-js;
+npm install -g clean-css;
+npm install -g component;
+npm install -g bower;
+npm install -g less;
+npm install -g autoprefixer;
+npm install -g stripmq;
+
+# install custom fork of suitcss
+npm install -g git://github.com/jkenlooper/preprocessor#0.5.0-depends.1;
+
+# Other useful commands
+npm install -g svg2png-cli;
+npm install -g cssunminifier;
 
 #jq
 
@@ -34,4 +54,9 @@ sudo apt-get install nodejs
 mkdir -p $HOME/bin/py;
 cd $HOME/bin/py;
 virtualenv --site-packages .;
+
+source ~/.profile;
 )
+
+pip install glue;
+pip install verify_version_spec;

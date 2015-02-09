@@ -98,16 +98,6 @@ if ! shopt -oq posix; then
 fi
 
 
-
-if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
-fi
-
-# Add virtualenv created bin
-if [ -d "$HOME/bin/py/bin" ] ; then
-  PATH="$HOME/bin/py/bin:$PATH"
-fi
-
 EDITOR=vim
 export EDITOR
 
