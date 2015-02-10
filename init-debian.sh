@@ -25,6 +25,7 @@ sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
 sudo apt-get install sqlite3 python-sqlite
 sudo apt-get install optipng
 sudo apt-get install geeqie
+sudo apt-get install jq
 
 #nodejs and npm
 # See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
@@ -33,6 +34,7 @@ curl -sL https://deb.nodesource.com/setup | sudo bash -;
 sudo apt-get install nodejs
 
 # Setup npm to use a different directory for global installs
+rm -rf $HOME/bin/npm-global;
 mkdir -p $HOME/bin/npm-global;
 npm config set prefix '~/bin/npm-global';
 
@@ -51,13 +53,13 @@ npm install -g git://github.com/jkenlooper/preprocessor#0.5.0-depends.1;
 npm install -g svg2png-cli;
 npm install -g cssunminifier;
 
-#jq
 
 # Setup the home directory with a python in bin/
 (
+rm -rf $HOME/bin/py;
 mkdir -p $HOME/bin/py;
 cd $HOME/bin/py;
-virtualenv --site-packages .;
+virtualenv --system-site-packages .;
 
 source ~/.profile;
 )
