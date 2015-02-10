@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create aliases in HOME replacing any existing
-for f in {bash_aliases,bashrc,gitconfig,profile,screenrc,vim,vimrc,xinitrc}; do
+for f in {bash_aliases,bashrc,gitattributes,gitconfig,profile,tmux.conf,vim,vimrc,xinitrc}; do
 	if [ -f $HOME/.$f -o -d $HOME/.$f ]; then 
 		mv $HOME/.$f $HOME/.$f.old;
 	fi

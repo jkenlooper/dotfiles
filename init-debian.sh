@@ -16,6 +16,10 @@ sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
 # Install support for YouCompleteMe 
 sudo apt-get install build-essential cmake python-dev;
 
+# install support for Pillow
+sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
+      libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+
 
 # Install more stuff for web development
 sudo apt-get install sqlite3 python-sqlite
@@ -58,5 +62,9 @@ virtualenv --site-packages .;
 source ~/.profile;
 )
 
+pip install Pillow;
+
+# Install other commands
 pip install glue;
+pip install colourless;
 pip install verify_version_spec;
