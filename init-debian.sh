@@ -25,7 +25,16 @@ sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
 sudo apt-get install sqlite3 python-sqlite
 sudo apt-get install optipng
 sudo apt-get install geeqie
-sudo apt-get install jq
+
+# Fall back on installing jq from source
+sudo apt-get install jq || (
+curl -O --url https://stedolan.github.io/jq/download/source/jq-1.4.tar.gz;
+tar -xzf jq-1.4.tar.gz;
+cd jq-1.4;
+./configure --prefix $HOME && make && make install;
+cd ..;
+rm -rf jq-1.4 jq-1.4.tar.gz;
+)
 
 #nodejs and npm
 # See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
