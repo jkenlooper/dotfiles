@@ -18,6 +18,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'nathanaelkane/vim-indent-guides'
 
+Plugin 'altercation/vim-colors-solarized'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -127,13 +129,14 @@ au FileType javascript setl fen
 au FileType javascript setl nocindent
 
 
+" Enable 'altercation/vim-colors-solarized'
 syntax enable
 set background=dark
+colorscheme solarized
+
 
 
 runtime macros/matchit.vim
 
 let g:ycm_complete_in_comments = 1
 let g:ycm_min_num_of_chars_for_completion = 2
-
-" colorscheme solarized
