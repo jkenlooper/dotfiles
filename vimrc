@@ -132,6 +132,9 @@ au FileType javascript setl nocindent
 " Enable 'altercation/vim-colors-solarized'
 syntax enable
 set background=dark
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termcolors = 16
 colorscheme solarized
 
 
