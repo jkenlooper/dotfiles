@@ -75,6 +75,10 @@ source ~/.profile;
 
 pip install Pillow;
 
+# Setup for packaging
+pip install wheel;
+pip install twine;
+
 # Install other commands
 pip install glue;
 pip install colourless;
