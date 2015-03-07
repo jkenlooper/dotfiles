@@ -1,33 +1,33 @@
 # Install core stuff
-sudo apt-get install git curl
+sudo apt-get --yes install git curl
 
 
 
-sudo apt-get install python-virtualenv
+sudo apt-get --yes install python-virtualenv
 
 # Vim
-sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
+sudo apt-get --yes install libncurses5-dev libgnome2-dev libgnomeui-dev \
     libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
     ruby-dev mercurial
 
-sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
+sudo apt-get --yes remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
 
 # Install support for YouCompleteMe 
-sudo apt-get install build-essential cmake python-dev;
+sudo apt-get --yes install build-essential cmake python-dev;
 
 # install support for Pillow
-sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
+sudo apt-get --yes install libtiff4-dev libjpeg8-dev zlib1g-dev \
       libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
 
 
 # Install more stuff for web development
-sudo apt-get install sqlite3 python-sqlite
-sudo apt-get install optipng
-sudo apt-get install geeqie
+sudo apt-get --yes install sqlite3 python-sqlite
+sudo apt-get --yes install optipng
+sudo apt-get --yes install geeqie
 
 # Fall back on installing jq from source
-sudo apt-get install jq || (
+sudo apt-get --yes install jq || (
 curl -O --url https://stedolan.github.io/jq/download/source/jq-1.4.tar.gz;
 tar -xzf jq-1.4.tar.gz;
 cd jq-1.4;
@@ -40,7 +40,7 @@ rm -rf jq-1.4 jq-1.4.tar.gz;
 # See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
 curl -sL https://deb.nodesource.com/setup | sudo bash -;
 
-sudo apt-get install nodejs
+sudo apt-get --yes install nodejs
 
 # Setup npm to use a different directory for global installs
 rm -rf $HOME/bin/npm-global;

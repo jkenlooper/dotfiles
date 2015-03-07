@@ -8,6 +8,7 @@ sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
 sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
 
 (
+mkdir -p ~/sources;
 cd ~/sources
 hg clone https://code.google.com/p/vim/
 cd vim

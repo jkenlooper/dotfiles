@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'fugitive-vim'
+" Plugin 'tpope/fugitive-vim'
 Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
@@ -20,6 +20,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
+Plugin 'editorconfig/editorconfig-vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -98,8 +99,9 @@ set noswapfile
 " Status bar
 set laststatus=2
 if has('statusline')
-  set statusline=%<%f
-  set statusline+=%w%h%m%r
+  "set statusline=%<%f
+  "set statusline+=%w%h%m%r
+  set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
   " set statusline+=%{fugitive#statusline()}
   " set statusline+=\ [%{getcwd()}]
 endif
