@@ -130,6 +130,9 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+TODOTXT_CFG_FILE=${HOME}/.todo.cfg
+export TODOTXT_CFG_FILE
+
 # Custom colors
 #9A9FA1
 #BCC0C2

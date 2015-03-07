@@ -3,7 +3,7 @@
 mkdir -p $PWD/vim;
 
 # Create aliases for dot files in HOME replacing any existing
-for f in {bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,pyrax.cfg,tmux.conf,vim,vimrc,xinitrc}; do
+for f in {bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,pyrax.cfg,todo.actions.d,todo.cfg,tmux.conf,vim,vimrc,xinitrc}; do
   # Remove old symbolic link if there.
 	if [ -L $HOME/.$f ]; then
     rm $HOME/.$f;
