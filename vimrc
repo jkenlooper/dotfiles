@@ -22,6 +22,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
 
+Plugin 'mark'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -53,7 +55,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set cursorline " Highlight current line
+" set cursorline " Highlight current line
 
 set formatoptions=
 set formatoptions+=c " Format comments
@@ -160,4 +162,18 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+map <leader>N :call RenameFile()<cr>
+
+set backspace=2
+set hidden
+set lazyredraw
+set scrolloff=6
+set autoread
+
+" Shrink the current window to fit the number of lines in the buffer.  Useful
+" for those buffers that are only a few lines
+nmap <silent> ,sw :execute ":resize " . line('$')<cr>
+
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=2048
