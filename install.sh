@@ -28,3 +28,8 @@ for f in bin/*; do
 	fi
 	ln -s $PWD/$f $HOME/$f;
 done;
+
+# Setup the linux console terminfo with a .terminfo in HOME directory.
+# terminfo.txt created by: `infocmp > terminfo.txt` and then customized with
+# a different cursor.
+tic $PWD/terminfo.txt
