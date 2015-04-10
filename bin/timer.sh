@@ -28,3 +28,4 @@ while test $TIMER -gt -1; do
     TIMER=$(($TIMER-1));
     sleep 1m;
 done
+rm ${HOME}/.tmp_timer.txt;
