@@ -19,3 +19,6 @@
 
 [diff "mincss"]
 	textconv = cssunminifier
+
+[diff "minjs"]
+	textconv = uglifyjs --beautify -- 
