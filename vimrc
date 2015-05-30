@@ -143,7 +143,11 @@ set background=dark
 " let g:solarized_termcolors = 16
 " colorscheme solarized
 
-
+unmap <C-y>
+let g:user_emmet_leader_key='<C-Y>'
+" let g:user_emmet_mode='a'
+" let g:user_emmet_install_global = 1
+" auto FileType html,css EmmetInstall
 
 runtime macros/matchit.vim
 
