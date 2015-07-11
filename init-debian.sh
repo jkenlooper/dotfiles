@@ -11,9 +11,7 @@ sudo apt-get --yes install libncurses5-dev libgnome2-dev libgnomeui-dev \
     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
     ruby-dev mercurial
 
-sudo apt-get --yes remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
-
-# Install support for YouCompleteMe 
+# Install support for compiling
 sudo apt-get --yes install build-essential cmake python-dev;
 
 # install support for Pillow
