@@ -1,3 +1,6 @@
+sudo apt-get update
+sudo apt-get upgrade
+
 # Install core stuff
 sudo apt-get --yes install git curl
 
