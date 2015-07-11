@@ -25,6 +25,8 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mark'
 Plugin 'mattn/emmet-vim'
 
+Plugin 'ledger/vim-ledger'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
