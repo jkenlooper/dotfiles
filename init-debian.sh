@@ -61,6 +61,7 @@ npm install -g git://github.com/jkenlooper/preprocessor#0.5.0-depends.1;
 
 # Other useful commands
 npm install -g svg2png-cli;
+npm install -g svgo;
 npm install -g cssunminifier;
 
 
@@ -72,6 +73,12 @@ cd $HOME/bin/py;
 virtualenv --system-site-packages .;
 
 source ~/.profile;
+)
+
+(
+# install latest setuptools
+cd ~/sources;
+curl https://bootstrap.pypa.io/ez_setup.py -o - | python
 )
 
 pip install Pillow;
