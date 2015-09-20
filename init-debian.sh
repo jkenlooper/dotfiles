@@ -77,12 +77,14 @@ mkdir -p $HOME/bin/py;
 cd $HOME/bin/py;
 virtualenv --system-site-packages .;
 
-source ~/.profile;
 )
+
+source $HOME/.profile;
 
 (
 # install latest setuptools
-cd ~/sources;
+mkdir -p $HOME/sources;
+cd $HOME/sources;
 curl https://bootstrap.pypa.io/ez_setup.py -o - | python
 )
 

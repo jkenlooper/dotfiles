@@ -17,6 +17,7 @@ done;
 
 
 # Create aliases in HOME/bin replacing any existing
+mkdir -p $HOME/bin;
 for f in bin/*; do
   # Remove old symbolic link if there.
 	if [ -L $HOME/$f ]; then
