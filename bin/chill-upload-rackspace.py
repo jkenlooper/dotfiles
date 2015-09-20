@@ -61,7 +61,7 @@ def main(argconfig):
         for page in (INDEX_PAGE, ERROR_PAGE):
             # If no index.html or 404 then link to the one found in
             # PUBLIC_URL_PREFIX
-            if not os.path.exists(os.path.join(local, page)):
+            if not os.path.exists(os.path.join(local, page)) and os.path.exists(os.path.join(local, prefix[1:], page)):
                 print "Creating hard link for {0}".format(page)
                 print "{0} -> {1}".format(os.path.join(local, page), os.path.join(local, prefix[1:], page))
                 os.link(os.path.join(local, prefix[1:], page), os.path.join(local, page))

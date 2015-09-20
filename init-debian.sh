@@ -1,6 +1,9 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# Network Time Protocol
+sudo apt-get --yes install ntp
+
 # Install core stuff
 sudo apt-get --yes install git curl
 
@@ -39,9 +42,11 @@ rm -rf jq-1.4 jq-1.4.tar.gz;
 
 #nodejs and npm
 # See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
-curl -sL https://deb.nodesource.com/setup | sudo bash -;
+#curl -sL https://deb.nodesource.com/setup | sudo bash -;
+curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 
 sudo apt-get --yes install nodejs
+
 
 # Setup npm to use a different directory for global installs
 rm -rf $HOME/bin/npm-global;
