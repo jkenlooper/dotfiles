@@ -6,6 +6,7 @@ sudo apt-get --yes install ntp
 
 # Install core stuff
 sudo apt-get --yes install git curl
+sudo apt-get --yes install tmux
 
 
 

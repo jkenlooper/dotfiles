@@ -10,7 +10,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'Valloric/YouCompleteMe'
+" Autocompletion
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
+
 Plugin 'hail2u/vim-css3-syntax'
 " Plugin 'tpope/fugitive-vim'
 Plugin 'groenewege/vim-less'
@@ -26,6 +29,11 @@ Plugin 'mark'
 Plugin 'mattn/emmet-vim'
 
 Plugin 'ledger/vim-ledger'
+
+" To evaluate
+Plugin 'scrooloose/nerdtree'
+Plugin 'mattn/gist-vim'
+Plugin 'kien/ctrlp.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
