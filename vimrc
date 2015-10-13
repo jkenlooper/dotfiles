@@ -11,8 +11,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Autocompletion
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'ervandew/supertab'
 
 Plugin 'hail2u/vim-css3-syntax'
 " Plugin 'tpope/fugitive-vim'
