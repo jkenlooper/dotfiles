@@ -1,4 +1,5 @@
-alias ls='ls --classify --color=auto'
+#alias ls='ls --classify --color=auto'
+alias ls='ls -F -G'
 
 alias static='python2 -m SimpleHTTPServer 4444'
 

@@ -1,45 +1,9 @@
 
 # Vim
+# Install on mac with support for ycm
 
-# Install support for YouCompleteMe
-sudo apt-get --yes install build-essential cmake python-dev;
-
-# Need newer version of cmake then what the current debian distro provides
-(
-cd ~/sources;
-sudo apt-get --yes remove cmake
-curl -O --url http://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.sh
-bash cmake-3.2.3-Linux-x86_64.sh
-)
-
-sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
-    libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-    libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-    ruby-dev mercurial
-
-sudo apt-get --yes remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common
-
-(
-mkdir -p ~/sources;
-cd ~/sources
-hg clone https://code.google.com/p/vim/
-cd vim
-./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-rubyinterp \
-            --enable-pythoninterp \
-            --with-python-config-dir=/usr/lib/python2.7/config \
-            --enable-perlinterp \
-            --enable-luainterp \
-            --enable-gui=gtk2 --enable-cscope --prefix=/usr
-make VIMRUNTIMEDIR=/usr/share/vim/vim74
-sudo make install
-)
-
-sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
-sudo update-alternatives --set editor /usr/bin/vim
-sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
-sudo update-alternatives --set vi /usr/bin/vim
+brew install vim;
+brew install cmake;
 
 mkdir -p vim/bundle;
 
@@ -52,6 +16,6 @@ vim +PluginInstall +qall;
 rm -rf ycm_build;
 mkdir ycm_build;
 cd ycm_build;
-~/sources/cmake-3.2.3-Linux-x86_64/bin/cmake -G "Unix Makefiles" . ../vim/bundle/YouCompleteMe/third_party/ycmd/cpp;
+cmake -G "Unix Makefiles" . ../vim/bundle/YouCompleteMe/third_party/ycmd/cpp;
 make ycm_support_libs;
 )
