@@ -10,7 +10,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'Valloric/YouCompleteMe'
+" Autocompletion
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
+
 Plugin 'hail2u/vim-css3-syntax'
 " Plugin 'tpope/fugitive-vim'
 Plugin 'groenewege/vim-less'
@@ -26,6 +29,11 @@ Plugin 'mark'
 Plugin 'mattn/emmet-vim'
 
 Plugin 'ledger/vim-ledger'
+
+" To evaluate
+Plugin 'scrooloose/nerdtree'
+Plugin 'mattn/gist-vim'
+Plugin 'kien/ctrlp.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -146,10 +154,12 @@ set background=dark
 " colorscheme solarized
 
 unmap <C-y>
-let g:user_emmet_leader_key='<C-Y>'
+" let g:user_emmet_leader_key='<C-Y>'
+" Set the leader key to ',' which makes the expansion be ',,'
+let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='a'
-" let g:user_emmet_install_global = 1
-" auto FileType html,css EmmetInstall
+let g:user_emmet_install_global = 0
+auto FileType html,css EmmetInstall
 
 runtime macros/matchit.vim
 

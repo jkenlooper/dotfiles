@@ -1,8 +1,12 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# Network Time Protocol
+sudo apt-get --yes install ntp
+
 # Install core stuff
 sudo apt-get --yes install git curl
+sudo apt-get --yes install tmux
 
 
 
@@ -39,9 +43,11 @@ rm -rf jq-1.4 jq-1.4.tar.gz;
 
 #nodejs and npm
 # See: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
-curl -sL https://deb.nodesource.com/setup | sudo bash -;
+#curl -sL https://deb.nodesource.com/setup | sudo bash -;
+curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 
 sudo apt-get --yes install nodejs
+
 
 # Setup npm to use a different directory for global installs
 rm -rf $HOME/bin/npm-global;
@@ -61,6 +67,7 @@ npm install -g git://github.com/jkenlooper/preprocessor#0.5.0-depends.1;
 
 # Other useful commands
 npm install -g svg2png-cli;
+npm install -g svgo;
 npm install -g cssunminifier;
 
 
@@ -71,7 +78,15 @@ mkdir -p $HOME/bin/py;
 cd $HOME/bin/py;
 virtualenv --system-site-packages .;
 
-source ~/.profile;
+)
+
+source $HOME/.profile;
+
+(
+# install latest setuptools
+mkdir -p $HOME/sources;
+cd $HOME/sources;
+curl https://bootstrap.pypa.io/ez_setup.py -o - | python
 )
 
 pip install Pillow;
