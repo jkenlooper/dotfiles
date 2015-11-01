@@ -13,7 +13,6 @@ This works a lot like the `chill run` command but includes the livereload bit.
 from docopt import docopt
 from chill.app import make_app
 from livereload import Server, shell
-import formic
 
 
 def run_livereload(config):
@@ -22,11 +21,9 @@ def run_livereload(config):
 
     server = Server(app)
 
-    # TODO: The command to build a site's resources will probably be different.
-    # Just using `make` here as it's pretty generic.
-    fileset = formic.FileSet(include="**")
-    for filename in fileset:
-        server.watch(filename, 'make')
+    # The command to build a site's resources will probably be different.  The
+    # `.livereload` file triggers a livereload if it is modified.
+    server.watch('.livereload')
 
     server.serve(
             host=app.config.get("HOST", '127.0.0.1'),
