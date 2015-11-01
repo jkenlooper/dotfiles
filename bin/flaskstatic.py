@@ -3,6 +3,7 @@ import os
 
 from werkzeug.serving import run_simple
 from flask import Flask, send_from_directory
+from livereload import Server, shell
 
 app = Flask(__name__, static_url_path=os.getcwd())
 #app.debug = True
@@ -17,5 +18,12 @@ def send_it(filename):
 
 
 if __name__ == '__main__':
+    server = Server(app)
 
-    run_simple('localhost', 4444, app, use_reloader=True, threaded=True, processes=1)
+    # The `.livereload` file triggers a livereload if it is modified.
+    server.watch('.livereload')
+
+    server.serve(
+            host=app.config.get("HOST", '127.0.0.1'),
+            port=app.config.get("PORT", 4444)
+            )
