@@ -11,8 +11,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Autocompletion
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'ervandew/supertab'
 
 Plugin 'hail2u/vim-css3-syntax'
 " Plugin 'tpope/fugitive-vim'
@@ -34,6 +34,7 @@ Plugin 'ledger/vim-ledger'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/gist-vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -153,13 +154,16 @@ set background=dark
 " let g:solarized_termcolors = 16
 " colorscheme solarized
 
+"au BufRead,BufNewFile *.html set syntax=jinja
+let g:syntastic_javascript_checkers = ['standard']
+
 unmap <C-y>
 " let g:user_emmet_leader_key='<C-Y>'
 " Set the leader key to ',' which makes the expansion be ',,'
 let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='a'
 let g:user_emmet_install_global = 0
-auto FileType html,css EmmetInstall
+auto FileType ejs,html,css EmmetInstall
 
 runtime macros/matchit.vim
 
