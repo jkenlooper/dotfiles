@@ -185,6 +185,12 @@ function! RenameFile()
 endfunction
 map <leader>N :call RenameFile()<cr>
 
+" Sort the rules with css-declaration-sorter, apply format fixes with cssfmt
+function! CleanupCSS()
+  exec ':0,$!cssfmt | cssdeclsort --order concentric-css'
+endfunction
+map <leader>c :call CleanupCSS()<cr>
+
 set backspace=2
 set hidden
 set lazyredraw
