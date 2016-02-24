@@ -34,6 +34,7 @@ Plugin 'ledger/vim-ledger'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/gist-vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -157,13 +158,16 @@ set background=dark
 " let g:solarized_termcolors = 16
 " colorscheme solarized
 
+"au BufRead,BufNewFile *.html set syntax=jinja
+let g:syntastic_javascript_checkers = ['standard']
+
 unmap <C-y>
 " let g:user_emmet_leader_key='<C-Y>'
 " Set the leader key to ',' which makes the expansion be ',,'
 let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='a'
 let g:user_emmet_install_global = 0
-auto FileType html,css EmmetInstall
+auto FileType ejs,html,css EmmetInstall
 
 runtime macros/matchit.vim
 
@@ -184,6 +188,12 @@ function! RenameFile()
   endif
 endfunction
 map <leader>N :call RenameFile()<cr>
+
+" Sort the rules with css-declaration-sorter, apply format fixes with cssfmt
+function! CleanupCSS()
+  exec ':0,$!cssfmt | cssdeclsort --order concentric-css'
+endfunction
+map <leader>c :call CleanupCSS()<cr>
 
 set backspace=2
 set hidden

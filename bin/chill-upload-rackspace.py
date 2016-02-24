@@ -38,7 +38,7 @@ import pyrax
 # having objects not found.
 DELETE_OBJECTS_DELAY = 900
 INDEX_PAGE = 'index.html'
-ERROR_PAGE = '404.html'
+ERROR_PAGE = 'error.html'
 
 # CDN TTL in seconds. Lowest is 900
 TTL = 900
@@ -58,8 +58,8 @@ def main(argconfig):
 
     prefix = config.get('PUBLIC_URL_PREFIX', None)
     if prefix:
-        for page in (INDEX_PAGE, ERROR_PAGE):
-            # If no index.html or 404 then link to the one found in
+        for page in (INDEX_PAGE, ERROR_PAGE, '401{0}'.format(ERROR_PAGE), '404{0}'.format(ERROR_PAGE) ):
+            # If no index.html or error pages then link to the one found in
             # PUBLIC_URL_PREFIX
             if not os.path.exists(os.path.join(local, page)) and os.path.exists(os.path.join(local, prefix[1:], page)):
                 print "Creating hard link for {0}".format(page)
