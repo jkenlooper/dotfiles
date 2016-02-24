@@ -11,3 +11,6 @@ alias sshx='ssh -c arcfour,blowfish-cbc -XC'
 alias t='todo.sh'
 
 alias today='todo.sh listpri A'
+
+alias sed='gsed'
+

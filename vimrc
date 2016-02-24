@@ -127,6 +127,10 @@ au BufRead,BufNewFile *.yaml,*yml set sw=2
 au BufRead,BufNewFile *.yaml,*yml set ts=2
 au BufRead,BufNewFile *.yaml,*yml set expandtab
 
+au BufRead,BufNewFile *.html,*pt set sw=2
+au BufRead,BufNewFile *.html,*pt set ts=2
+au BufRead,BufNewFile *.html,*pt set expandtab
+
 au BufRead,BufNewFile *.rst set sw=4
 au BufRead,BufNewFile *.rst set ts=4
 au BufRead,BufNewFile *.rst set expandtab
