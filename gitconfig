@@ -21,4 +21,4 @@
 	textconv = cssunminifier
 
 [diff "minjs"]
-	textconv = uglifyjs --beautify -- 
+	textconv = uglifyjs --beautify --

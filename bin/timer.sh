@@ -15,7 +15,8 @@ TIMER=$2;
 fi
 
 # Load the TASK variable with the todo text getting just the first line.
-TASK=`sed -n ''"$1"' L' $HOME/.todo/todo.txt`;
+#TASK=`sed -n ''"$1"' L' $HOME/.todo/todo.txt`;
+TASK=$1;
 echo "Starting timer for task: ${TASK}"
 
 # Truncate it so the time left is at the end.
@@ -26,6 +27,6 @@ TASK=${TASK:0:34}
 while test $TIMER -gt -1; do
     echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt;
     TIMER=$(($TIMER-1));
-    sleep 1m;
+    sleep 60;
 done
 rm ${HOME}/.tmp_timer.txt;
