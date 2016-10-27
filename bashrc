@@ -52,9 +52,9 @@ PROMPT_COMMAND=$(
     fi
 
     if((_temp_var == 0)); then
-        PS1="\[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\]: "
+        PS1="\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\]: "
     else
-        PS1="\[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\]\[\e[33m\]|ERROR:$_temp_var|\[\e[0m\]: "
+        PS1="\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\]\[\e[33m\]|ERROR:$_temp_var|\[\e[0m\]: "
     fi
 EOF
 )
