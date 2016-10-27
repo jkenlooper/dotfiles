@@ -3,7 +3,7 @@
 mkdir -p $PWD/vim;
 
 # Create aliases for dot files in HOME replacing any existing
-for f in {bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,pyrax.cfg,todo.actions.d,todo.cfg,tmux.conf,vim,vimrc,xinitrc}; do
+for f in {bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,pyrax.cfg,todo.actions.d,todo.cfg,tmux.conf,vim,vimrc}; do
   # Remove old symbolic link if there.
 	if [ -L $HOME/.$f ]; then
     rm $HOME/.$f;
@@ -30,8 +30,3 @@ for f in bin/*; do
 	fi
 	ln -s $PWD/$f $HOME/$f;
 done;
-
-# Setup the linux console terminfo with a .terminfo in HOME directory.
-# terminfo.txt created by: `infocmp > terminfo.txt` and then customized with
-# a different cursor.
-tic $PWD/terminfo.txt

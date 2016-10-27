@@ -1,6 +1,3 @@
-[user]
-	name = Jake Hickenlooper
-	email = jake@weboftomorrow.com
 [alias]
   st = status
   co = checkout
@@ -21,4 +18,4 @@
 	textconv = cssunminifier
 
 [diff "minjs"]
-	textconv = uglifyjs --beautify -- 
+	textconv = uglifyjs --beautify --
