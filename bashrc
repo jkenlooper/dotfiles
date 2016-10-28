@@ -97,7 +97,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 EDITOR=vim
 export EDITOR
 
