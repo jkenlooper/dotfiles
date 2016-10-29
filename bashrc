@@ -129,6 +129,13 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+if [ -f /mnt/boxstash/todo]; then
+  TODO_DIR=/mnt/boxstash/todo
+  export TODO_DIR
+else
+  TODO_DIR=$HOME/boxstash/todo
+  export TODO_DIR
+fi
 TODOTXT_CFG_FILE=${HOME}/.todo.cfg
 export TODOTXT_CFG_FILE
 

@@ -14,7 +14,6 @@ for f in {bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,pyrax
 done;
 
 
-mkdir -p $HOME/bin;
 # Create aliases in HOME/bin replacing any existing
 mkdir -p $HOME/bin;
 for f in bin/*; do
