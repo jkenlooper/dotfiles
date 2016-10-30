@@ -129,7 +129,7 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
-if [ -f /mnt/boxstash/todo]; then
+if [ -d "/mnt/boxstash/todo" ]; then
   TODO_DIR=/mnt/boxstash/todo
   export TODO_DIR
 else
