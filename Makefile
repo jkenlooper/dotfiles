@@ -1,4 +1,6 @@
-all : .install.sh
+objects := .install.sh .neowvim.sh
+
+all : $(objects)
 
 .PHONY : all clean
 
@@ -6,5 +8,9 @@ all : .install.sh
 	./$<;
 	@touch $@;
 
+.neovim.sh : neovim.sh .install.sh
+	./$<;
+	@touch $@;
+
 clean :
-	rm $(root-objects) $(user-objects);
+	rm $(objects);
