@@ -129,6 +129,9 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME
+
 if [ -d "/mnt/boxstash/todo" ]; then
   TODO_DIR=/mnt/boxstash/todo
   export TODO_DIR
