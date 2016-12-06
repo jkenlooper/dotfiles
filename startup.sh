@@ -25,3 +25,25 @@ vim -c PlugInstall
 # Install other python scripts
 # for example:
 # pip install chill
+
+# Create public and private key with a comment
+ssh-keygen -t rsa -C "box"
+
+echo "ssh public key created:"
+cat ~/.ssh/id_rsa.pub
+
+#
+read -p "Enter git config user name: " STARTUP_GIT_CONFIG_USER_NAME
+
+if test "$STARTUP_GIT_CONFIG_USER_NAME"; then
+  git config --global --replace-all user.name $STARTUP_GIT_CONFIG_USER_NAME;
+fi
+
+read -p "Enter git config user email: " STARTUP_GIT_CONFIG_USER_EMAIL
+
+if test "$STARTUP_GIT_CONFIG_USER_EMAIL"; then
+  git config --global --replace-all user.email $STARTUP_GIT_CONFIG_USER_EMAIL;
+fi
+
+# Update the timezone
+sudo dpkg-reconfigure tzdata

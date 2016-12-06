@@ -1,3 +1,4 @@
 /config/nvim/autoload
 /config/nvim/plugged
+/config/nvim/.netrwhist
 /.*.sh
