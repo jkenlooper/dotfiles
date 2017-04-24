@@ -1,7 +1,7 @@
 # clear out any suffixes
 .SUFFIXES:
 
-objects := .install.sh .global-npm-setup.sh .global-npm-packages.sh .todotxt.sh
+objects := .install.sh .global-npm-setup.sh .global-npm-packages.sh .todotxt.sh .startup.sh
 
 all : $(objects)
 
@@ -21,6 +21,10 @@ all : $(objects)
 
 .global-npm-packages.sh : global-npm-packages.sh .global-npm-setup.sh
 	./$<;
+	@touch $@;
+
+.startup.sh : .install.sh
+	echo "cd to /vagrant/dotfiles/ and run startup.sh";
 	@touch $@;
 
 clean :
