@@ -26,6 +26,11 @@ if [ -d "$HOME/bin/py/bin" ] ; then
   PATH="$HOME/bin/py/bin:$PATH"
 fi
 
+# Add .local/bin https://docs.python.org/3/library/site.html#site.USER_BASE
+if [ -d "$HOME/.local/bin" ] ; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Add npm-global bin
 if [ -d "$HOME/bin/npm-global/bin" ] ; then
   PATH="$HOME/bin/npm-global/bin:$PATH"

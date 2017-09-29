@@ -40,6 +40,8 @@ esac
 # The terminal display - "user[path](gitbranch)$ " where gitbranch only shows up in a git repo
 parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'; }
 
+PROMPT_DIRTRIM=3
+
 PROMPT_COMMAND=$(
     cat<<-'EOF'
 
