@@ -2,11 +2,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Make sure you use single quotes
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
@@ -41,6 +41,7 @@ auto FileType ejs,html,css EmmetInstall
 
 
 let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_css_checkers = ['stylelint']
 
 " set leader key to comma
 let mapleader = ","
@@ -71,15 +72,19 @@ set lazyredraw
 set scrolloff=6
 set autoread
 
+set textwidth=80
+
 set formatoptions=
 set formatoptions+=c " Format comments
 set formatoptions+=r " Continue comments by default
-set formatoptions+=o " Make comment when using o or O from comment line
+" set formatoptions+=o " Make comment when using o or O from comment line
+" set formatoptions+=a " Automatic formatting of paragraphs.
 set formatoptions+=q " Format comments with gq
-set formatoptions+=n " Recognize numbered lists
+" set formatoptions+=n " Recognize numbered lists
 set formatoptions+=2 " Use indent from 2nd line of a paragraph
 set formatoptions+=l " Don't break lines that are already long
 set formatoptions+=1 " Break before 1-letter words
+set formatoptions+=j " remove a comment leader when joining lines.
 "
 " Speed up viewport scrolling
 nnoremap <C-e> 3<C-e>
@@ -137,7 +142,20 @@ au BufRead,BufNewFile *.rst set expandtab
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set ts=4
-highlight BadWhitespace ctermbg=red guibg=red
+
+highlight TabLine cterm=underline ctermfg=130 ctermbg=NONE
+highlight TabLineSel ctermbg=NONE ctermfg=NONE
+highlight TabLineFill ctermbg=NONE cterm=NONE
+
+highlight StatusLine cterm=underline ctermfg=130
+highlight StatusLineNC cterm=underline ctermfg=130
+highlight VertSplit cterm=NONE ctermbg=0 ctermfg=130
+highlight LineNr ctermbg=0 ctermfg=130
+
+" Set the vertical split character to space
+set fillchars+=vert:\
+
+syntax enable
 
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
@@ -152,3 +170,10 @@ au FileType javascript setl nocindent
 " for those buffers that are only a few lines
 nmap <silent> ,sw :execute ":resize " . line('$')<cr>
 
+set spell spelllang=en_us
+highlight SpellLocal ctermbg=NONE
+highlight SpellBad ctermbg=NONE cterm=undercurl
+highlight SpellRare ctermbg=NONE cterm=undercurl
+
+" map jk to esc
+:imap jk <Esc>
