@@ -14,26 +14,14 @@ virtualenv --system-site-packages .;
 source $HOME/.profile;
 
 
-# Install vim-plug
-if test ! -e $XDG_CONFIG_HOME/nvim/autoload/plug.vim ; then
-  curl -fLo $XDG_CONFIG_HOME/nvim/autoload/plug.vim --create-dirs https://github.com/junegunn/vim-plug/releases/download/0.9.1/plug.vim
-fi
-
-#vim -c PlugInstall
-nvim +PlugInstall +qa
-
+# Install Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 # Install other python scripts
 # for example:
 # pip install chill
 
-# Create public and private key with a comment
-ssh-keygen -t rsa -C "box"
-
-echo "ssh public key created:"
-cat ~/.ssh/id_rsa.pub
-
-#
 read -p "Enter git config user name: " STARTUP_GIT_CONFIG_USER_NAME
 
 if test "$STARTUP_GIT_CONFIG_USER_NAME"; then
