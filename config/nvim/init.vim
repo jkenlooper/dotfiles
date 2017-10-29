@@ -152,8 +152,9 @@ highlight StatusLineNC cterm=underline ctermfg=130
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=130
 highlight LineNr ctermbg=0 ctermfg=130
 
-" Set the vertical split character to space
-set fillchars+=vert:\
+" Set the vertical split character to space. Fold after to prevent trailing
+" space removal.
+set fillchars+=vert:\ ,fold:-
 
 syntax enable
 
