@@ -20,5 +20,5 @@
 [diff "minjs"]
 	textconv = uglifyjs --beautify --
 [user]
-	name = jake
+	name = Jake Hickenlooper
 	email = jake@weboftomorrow.com
