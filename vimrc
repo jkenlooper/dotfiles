@@ -1,22 +1,38 @@
-call plug#begin('~/.config/nvim/plugged')
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Make sure you use single quotes
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-" Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tpope/vim-surround'
-Plug 'editorconfig/editorconfig-vim'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-" Add plugins to &runtimepath
-call plug#end()
+" Autocompletion
+Plugin 'Valloric/YouCompleteMe'
 
+Plugin 'airblade/vim-gitgutter'
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'w0rp/ale'
+Plugin 'tpope/vim-surround'
+Plugin 'editorconfig/editorconfig-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " Use true color
 " https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/
@@ -40,8 +56,8 @@ let g:user_emmet_install_global = 0
 auto FileType ejs,html,css EmmetInstall
 
 
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_css_checkers = ['stylelint']
+" let g:syntastic_javascript_checkers = ['standard']
+" let g:syntastic_css_checkers = ['stylelint']
 
 " set leader key to comma
 let mapleader = ","
@@ -157,6 +173,9 @@ highlight LineNr ctermbg=0 ctermfg=130
 set fillchars+=vert:\ ,fold:-
 
 syntax enable
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=2048
 
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
