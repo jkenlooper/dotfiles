@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Autocompletion
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ajh17/VimCompletesMe'
 
 Plugin 'airblade/vim-gitgutter'
 
@@ -18,6 +18,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'sheerun/vim-polyglot'
+Plugin 'docunext/closetag.vim'
+Plugin 'tpope/vim-sleuth'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -24,7 +24,7 @@ all : $(objects)
 	@touch $@;
 
 .startup.sh : .install.sh
-	echo "cd to /vagrant/dotfiles/ and run startup.sh";
+	echo "cd to dotfiles/ and run startup.sh";
 	@touch $@;
 
 clean :
