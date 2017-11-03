@@ -163,14 +163,19 @@ au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py,*.pyw set ts=4
 
-highlight TabLine cterm=underline ctermfg=130 ctermbg=NONE
+highlight TabLine cterm=underline ctermfg=5 ctermbg=NONE
 highlight TabLineSel ctermbg=NONE ctermfg=NONE
 highlight TabLineFill ctermbg=NONE cterm=NONE
 
-highlight StatusLine cterm=underline ctermfg=130
-highlight StatusLineNC cterm=underline ctermfg=130
-highlight VertSplit cterm=NONE ctermbg=0 ctermfg=130
-highlight LineNr ctermbg=0 ctermfg=130
+highlight StatusLine cterm=underline ctermfg=7 ctermbg=NONE
+highlight StatusLineNC cterm=underline ctermfg=5 ctermbg=NONE
+highlight VertSplit cterm=NONE ctermbg=0 ctermfg=5
+highlight LineNr ctermbg=NONE ctermfg=0
+
+" Set the visual mode highlighting to be less annoying
+highlight Visual cterm=NONE ctermfg=NONE ctermbg=0
+
+highlight MatchParen ctermbg=7 cterm=NONE ctermfg=0
 
 " Set the vertical split character to space. Fold after to prevent trailing
 " space removal.
@@ -179,7 +184,7 @@ set fillchars+=vert:\ ,fold:-
 syntax enable
 
 " Syntax coloring lines that are too long just slows down the world
-set synmaxcol=2048
+set synmaxcol=600
 
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
