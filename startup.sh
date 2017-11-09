@@ -36,3 +36,5 @@ fi
 
 # Update the timezone
 sudo dpkg-reconfigure tzdata
+
+echo "Logout and back in to set local python paths."
