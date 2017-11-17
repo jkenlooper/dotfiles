@@ -57,7 +57,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=16
 let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='a'
 let g:user_emmet_install_global = 0
-auto FileType ejs,html,css EmmetInstall
+auto FileType ejs,html,jinja,css EmmetInstall
 
 
 " let g:syntastic_javascript_checkers = ['standard']
