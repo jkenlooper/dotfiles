@@ -1,5 +1,2 @@
-*.gif diff=image
-*.jpg diff=image
-*.png diff=image
 *.min.css diff=mincss
 *.min.js diff=minjs

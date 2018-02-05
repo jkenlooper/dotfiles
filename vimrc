@@ -1,6 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -21,14 +18,13 @@ Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'sheerun/vim-polyglot'
 Plugin 'docunext/closetag.vim'
-Plugin 'tpope/vim-sleuth'
+
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -44,11 +40,13 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_default_mapping = 1 " <Leader>ig
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=8
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=16
+highlight IndentGuidesOdd ctermbg=NONE
+highlight IndentGuidesEven ctermbg=0
 
 " emmet-vim
 " unmap <C-y>
@@ -58,10 +56,6 @@ let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='a'
 let g:user_emmet_install_global = 0
 auto FileType ejs,html,jinja,css EmmetInstall
-
-
-" let g:syntastic_javascript_checkers = ['standard']
-" let g:syntastic_css_checkers = ['stylelint']
 
 " set leader key to comma
 let mapleader = ","
@@ -80,13 +74,13 @@ map <leader>N :call RenameFile()<cr>
 
 " Sort the rules with css-declaration-sorter, apply format fixes with cssfmt
 " npm install -g cssfmt;
-" npm install -g css-declaration-sorter;
+" npm install -g css-declaration-sorter@v2.1.0
 function! CleanupCSS()
   exec ':0,$!cssfmt | cssdeclsort --order concentric-css'
 endfunction
 map <leader>c :call CleanupCSS()<cr>
 
-set backspace=2
+set backspace=indent,eol,start
 set hidden
 set lazyredraw
 set scrolloff=6
@@ -123,8 +117,8 @@ set incsearch
 set showcmd
 set hlsearch
 set nobackup
-set ts=2
-set sw=2
+set tabstop=2
+set shiftwidth=0
 set expandtab
 " All line endings are unix
 set fileformat=unix
@@ -151,17 +145,14 @@ map \r :%s/\t/  /g<CR>| "convert tabs to spaces)
 map \m :%s/<C-V><CR>$//g<CR>:%s/<C-V><CR>/\r/g<CR>| "replace ^M with returns (use if mixed with newlines)
 map \M :%s/<C-V><CR>/\r/g<CR>| "replace ^M with returns (use if not mixed with newlines)
 
-au BufRead,BufNewFile *.yaml,*yml set sw=2
-au BufRead,BufNewFile *.yaml,*yml set ts=2
+au BufRead,BufNewFile *.yaml,*yml set tabstop=2
 au BufRead,BufNewFile *.yaml,*yml set expandtab
 
-au BufRead,BufNewFile *.rst set sw=4
-au BufRead,BufNewFile *.rst set ts=4
+au BufRead,BufNewFile *.rst set tabstop=4
 au BufRead,BufNewFile *.rst set expandtab
 
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
-au BufRead,BufNewFile *.py,*.pyw set ts=4
+au BufRead,BufNewFile *.py,*.pyw set tabstop=4
 
 highlight TabLine cterm=underline ctermfg=5 ctermbg=NONE
 highlight TabLineSel ctermbg=NONE ctermfg=NONE
@@ -171,6 +162,8 @@ highlight StatusLine cterm=underline ctermfg=7 ctermbg=NONE
 highlight StatusLineNC cterm=underline ctermfg=5 ctermbg=NONE
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=5
 highlight LineNr ctermbg=NONE ctermfg=0
+
+highlight Folded ctermbg=0
 
 " Set the visual mode highlighting to be less annoying
 highlight Visual cterm=NONE ctermfg=NONE ctermbg=0
@@ -187,19 +180,19 @@ syntax enable
 set synmaxcol=600
 
 " Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+"au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-au FileType javascript setl fen
-au FileType javascript setl nocindent
+" au FileType javascript setl fen
+" au FileType javascript setl nocindent
 
 
 " Shrink the current window to fit the number of lines in the buffer.  Useful
 " for those buffers that are only a few lines
 nmap <silent> ,sw :execute ":resize " . line('$')<cr>
 
-set spell spelllang=en_us
+au BufRead,BufNewFile *.md,*.txt set spell spelllang=en_us
 highlight SpellLocal ctermbg=NONE
 highlight SpellBad ctermbg=NONE cterm=undercurl
 highlight SpellRare ctermbg=NONE cterm=undercurl
