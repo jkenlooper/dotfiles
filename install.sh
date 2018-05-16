@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create aliases for dot files in HOME replacing any existing
-for f in {bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,todo.actions.d,todo.cfg,tmux.conf,config,vim,vimrc}; do
+for f in {bash_aliases,bashrc,ctags,editorconfig,gitattributes,gitconfig,profile,todo.actions.d,todo.cfg,tmux.conf,config,vim,vimrc}; do
   # Remove old symbolic link if there.
 	if [ -L $HOME/.$f ]; then
     rm $HOME/.$f;
