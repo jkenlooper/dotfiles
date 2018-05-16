@@ -1,7 +1,7 @@
 # clear out any suffixes
 .SUFFIXES:
 
-objects := .install.sh .global-npm-setup.sh .global-npm-packages.sh .todotxt.sh .startup.sh
+objects := .install.sh .global-npm-setup.sh .global-npm-packages.sh .todotxt.sh .timezone.sh .startup.sh
 
 all : $(objects)
 
@@ -25,6 +25,10 @@ all : $(objects)
 
 .startup.sh : .install.sh
 	echo "Logout and back in and cd to dotfiles/ and run startup.sh";
+	@touch $@;
+
+.timezone.sh : timezone.sh
+	./$<;
 	@touch $@;
 
 clean :
