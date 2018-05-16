@@ -15,7 +15,7 @@ TIMER=$2;
 fi
 
 # Load the TASK variable with the todo text getting just the first line.
-TASK=`sed -n ''"$1"' L' $HOME/.todo/todo.txt`;
+TASK=`sed -n ''"$1"' L' $TODO_FILE`;
 echo "Starting timer for task: ${TASK}"
 
 # Truncate it so the time left is at the end.
