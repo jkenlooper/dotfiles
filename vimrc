@@ -19,7 +19,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'docunext/closetag.vim'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'nathanaelkane/vim-indent-guides'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -2,14 +2,6 @@
 
 # After logging in run this script to initialize
 
-# Setup the home directory with a python in bin/
-(
-rm -rf $HOME/bin/py;
-mkdir -p $HOME/bin/py;
-cd $HOME/bin/py;
-virtualenv --system-site-packages .;
-)
-
 # add the bin/py to path in case it's not there by sourcing .profile again.
 source $HOME/.profile;
 
@@ -33,8 +25,3 @@ read -p "Enter git config user email: [$(git config --global user.email)]" START
 if test "$STARTUP_GIT_CONFIG_USER_EMAIL"; then
   git config --global --replace-all user.email $STARTUP_GIT_CONFIG_USER_EMAIL;
 fi
-
-# Update the timezone
-sudo dpkg-reconfigure tzdata
-
-echo "Logout and back in to set local python paths."

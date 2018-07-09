@@ -1,7 +1,7 @@
 # clear out any suffixes
 .SUFFIXES:
 
-objects := .install.sh .global-npm-setup.sh .global-npm-packages.sh .todotxt.sh .timezone.sh .startup.sh
+objects := .install.sh .todotxt.sh .startup.sh
 
 all : $(objects)
 
