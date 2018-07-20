@@ -17,6 +17,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'sheerun/vim-polyglot'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'docunext/closetag.vim'
 
 " Plugin 'nathanaelkane/vim-indent-guides'
@@ -47,6 +48,12 @@ let g:indent_guides_default_mapping = 1 " <Leader>ig
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 highlight IndentGuidesOdd ctermbg=NONE
 highlight IndentGuidesEven ctermbg=0
+
+" Fix for #303 issue when opening js files
+let g:polyglot_disabled = ['graphql']
+
+autocmd BufRead,BufNewFile *.ts :set filetype=typescript
+autocmd FileType typescript :set makeprg=tsc
 
 " emmet-vim
 " unmap <C-y>
