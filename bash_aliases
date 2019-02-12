@@ -11,3 +11,4 @@ alias t='todo.sh'
 
 alias today='todo.sh listpri A'
 
+alias clot='nohup clog.sh >> ~/clog.output & tmux new -s hack'

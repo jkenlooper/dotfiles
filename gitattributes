@@ -1,2 +1,2 @@
-*.min.css diff=mincss
-*.min.js diff=minjs
+off*.min.css diff=mincss
+off*.min.js diff=minjs

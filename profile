@@ -63,3 +63,5 @@ AWS_SECRET_ACCESS_KEY="$LC_AWS_SECRET_ACCESS_KEY"
 
 # Change the location of the file that the AWS CLI uses to store configuration profiles.
 #AWS_CONFIG_FILE="$LC_AWS_CONFIG_FILE"
+
+export PATH="$HOME/.cargo/bin:$PATH"

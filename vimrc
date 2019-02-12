@@ -3,7 +3,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Autocompletion
 Plugin 'ajh17/VimCompletesMe'
@@ -15,6 +15,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'Quramy/tsuquyomi'
 
 Plugin 'sheerun/vim-polyglot'
 Plugin 'leafgarland/typescript-vim'
@@ -48,6 +49,38 @@ let g:indent_guides_default_mapping = 1 " <Leader>ig
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 highlight IndentGuidesOdd ctermbg=NONE
 highlight IndentGuidesEven ctermbg=0
+
+highlight ALEError ctermbg=0
+highlight ALEErrorLine ctermbg=NONE
+highlight ALEInfo ctermbg=0
+highlight ALEInfoLine ctermbg=NONE
+highlight ALEStyleError ctermbg=0
+highlight ALEStyleWarning ctermbg=0
+highlight ALEWarning ctermbg=0
+highlight ALEWarningLine ctermbg=NONE
+let g:ale_set_highlights = 1
+" for performance reasons set this to a longer delay
+let g:ale_echo_delay = 500
+
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'css': ['prettier'],
+" \}
+
+let g:ale_linters = {
+\   'typescript': ['prettier', 'tsserver'],
+\   'javascript': ['prettier'],
+\}
+let g:ale_fixers = {
+\   'typescript': ['prettier'],
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 " Fix for #303 issue when opening js files
 let g:polyglot_disabled = ['graphql']
