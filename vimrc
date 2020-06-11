@@ -21,7 +21,9 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'docunext/closetag.vim'
 
-" Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
+
+Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,10 +70,15 @@ let g:ale_echo_delay = 500
 " \}
 
 let g:ale_linters = {
-\   'typescript': ['prettier', 'tsserver'],
+\   'markdown': ['prettier'],
+\   'html': ['prettier'],
+\   'typescript': ['prettier'],
 \   'javascript': ['prettier'],
+\   'css': ['prettier'],
 \}
 let g:ale_fixers = {
+\   'markdown': ['prettier'],
+\   'html': ['prettier'],
 \   'typescript': ['prettier'],
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
@@ -87,6 +94,12 @@ let g:polyglot_disabled = ['graphql']
 
 autocmd BufRead,BufNewFile *.ts :set filetype=typescript
 autocmd FileType typescript :set makeprg=tsc
+
+autocmd BufWritePre *.py execute ':Black'
+
+autocmd BufRead,BufNewFile *.jinja2 :set filetype=jinja2
+
+autocmd BufRead,BufNewFile *.config :set filetype=config
 
 " emmet-vim
 " unmap <C-y>
@@ -123,7 +136,7 @@ map <leader>c :call CleanupCSS()<cr>
 set backspace=indent,eol,start
 set hidden
 set lazyredraw
-set scrolloff=6
+set scrolloff=0
 set autoread
 
 set textwidth=80
@@ -145,11 +158,13 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 " Set relative line numbers
-"set relativenumber " Use relative line numbers. Current line is still in status bar.
-"au BufReadPost,BufNewFile * set relativenumber
-set number
-au BufReadPost,BufNewFile * set number
+set nonumber " Don't show the current line number. Use 0 instead.
+set relativenumber " Use relative line numbers. Current line is still in status bar.
+au BufReadPost,BufNewFile * set relativenumber
+"set number
+"au BufReadPost,BufNewFile * set number
 
+set mouse=a
 set autoindent
 set history=50
 set ruler
