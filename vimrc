@@ -11,7 +11,7 @@ Plugin 'ajh17/VimCompletesMe'
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
@@ -52,6 +52,11 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 highlight IndentGuidesOdd ctermbg=NONE
 highlight IndentGuidesEven ctermbg=0
 
+highlight SignColumn ctermbg=0
+highlight GitGutterAdd ctermbg=0
+highlight GitGutterChange ctermbg=0
+highlight GitGutterDelete ctermbg=0
+
 highlight ALEError ctermbg=0
 highlight ALEErrorLine ctermbg=NONE
 highlight ALEInfo ctermbg=0
@@ -63,11 +68,6 @@ highlight ALEWarningLine ctermbg=NONE
 let g:ale_set_highlights = 1
 " for performance reasons set this to a longer delay
 let g:ale_echo_delay = 500
-
-" let g:ale_fixers = {
-" \   'javascript': ['prettier'],
-" \   'css': ['prettier'],
-" \}
 
 let g:ale_linters = {
 \   'markdown': ['prettier'],
@@ -86,14 +86,22 @@ let g:ale_fixers = {
 
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 1
+
+" let g:typescript_compiler_binary = 'npm run tsc --'
+let g:typescript_compiler_options = '--noEmit --allowJs'
 
 " Fix for #303 issue when opening js files
 let g:polyglot_disabled = ['graphql']
 
+" Set filetype as typescript for javascript so jsdoc comments have better syntax
+" coloring.
+autocmd BufRead,BufNewFile *.js :set filetype=typescript
+autocmd BufRead,BufNewFile *.mjs :set filetype=typescript
+
 autocmd BufRead,BufNewFile *.ts :set filetype=typescript
-autocmd FileType typescript :set makeprg=tsc
+" autocmd FileType typescript :set makeprg=tsc
 
 autocmd BufWritePre *.py execute ':Black'
 
@@ -135,6 +143,12 @@ map <leader>c :call CleanupCSS()<cr>
 
 set backspace=indent,eol,start
 set hidden
+
+" Make :find more useful when finding a file in the project directory.
+set path+=**
+set wildmenu
+set wildignore+=**/node_modules/**
+
 set lazyredraw
 set scrolloff=0
 set autoread
@@ -160,9 +174,10 @@ nnoremap <C-y> 3<C-y>
 " Set relative line numbers
 set nonumber " Don't show the current line number. Use 0 instead.
 set relativenumber " Use relative line numbers. Current line is still in status bar.
-au BufReadPost,BufNewFile * set relativenumber
-"set number
-"au BufReadPost,BufNewFile * set number
+" au BufReadPost,BufNewFile * set relativenumber
+" set number
+" set norelativenumber
+" au BufReadPost,BufNewFile * set number
 
 set mouse=a
 set autoindent
@@ -213,17 +228,29 @@ highlight TabLine cterm=underline ctermfg=5 ctermbg=NONE
 highlight TabLineSel ctermbg=NONE ctermfg=NONE
 highlight TabLineFill ctermbg=NONE cterm=NONE
 
-highlight StatusLine cterm=underline ctermfg=7 ctermbg=NONE
-highlight StatusLineNC cterm=underline ctermfg=5 ctermbg=NONE
+highlight StatusLine cterm=None ctermfg=0 ctermbg=7
+highlight StatusLineNC cterm=None ctermfg=7 ctermbg=0
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=5
-highlight LineNr ctermbg=NONE ctermfg=0
+highlight LineNr ctermbg=0 ctermfg=7
+highlight CursorLine cterm=None ctermbg=NONE ctermfg=NONE
+highlight clear CursorLine
+highlight CursorLineNR cterm=None ctermbg=7 ctermfg=0
+" highlight CursorColumn cterm=NONE ctermbg=0 ctermfg=NONE
+
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  " au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+  au WinLeave * setlocal nocursorline
+  " au WinLeave * setlocal nocursorcolumn
+augroup END
 
 highlight Folded ctermbg=0
 
 " Set the visual mode highlighting to be less annoying
 highlight Visual cterm=NONE ctermfg=NONE ctermbg=0
 
-highlight MatchParen ctermbg=7 cterm=NONE ctermfg=0
+highlight MatchParen ctermbg=None cterm=underline ctermfg=None
 
 " Set the vertical split character to space. Fold after to prevent trailing
 " space removal.
