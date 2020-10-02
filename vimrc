@@ -172,10 +172,10 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 " Set relative line numbers
-set nonumber " Don't show the current line number. Use 0 instead.
+" set nonumber " Don't show the current line number. Use 0 instead.
 set relativenumber " Use relative line numbers. Current line is still in status bar.
 " au BufReadPost,BufNewFile * set relativenumber
-" set number
+set number " Show current line number
 " set norelativenumber
 " au BufReadPost,BufNewFile * set number
 
