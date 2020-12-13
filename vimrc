@@ -12,7 +12,7 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'mattn/emmet-vim'
 " Plugin 'scrooloose/nerdtree'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Quramy/tsuquyomi'
@@ -83,6 +83,9 @@ let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
 \}
+let g:ale_pattern_options = {
+\   '\.cloudformation\.yaml$': {'ale_linters': ['cfn-lint'], 'ale_fixers': ['cfn-lint']},
+\}
 
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
@@ -144,6 +147,9 @@ map <leader>c :call CleanupCSS()<cr>
 set backspace=indent,eol,start
 set hidden
 
+" Save marks and jumps when exiting vim
+set viminfo='100,f1
+
 " Make :find more useful when finding a file in the project directory.
 set path+=**
 set wildmenu
@@ -179,7 +185,7 @@ set number " Show current line number
 " set norelativenumber
 " au BufReadPost,BufNewFile * set number
 
-set mouse=a
+set mouse=
 set autoindent
 set history=50
 set ruler
