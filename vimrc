@@ -6,11 +6,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Autocompletion
-Plugin 'ajh17/VimCompletesMe'
+"Plugin 'ajh17/VimCompletesMe'
 
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'mattn/emmet-vim'
+" Plugin 'mattn/emmet-vim'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-surround'
@@ -22,8 +22,6 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'docunext/closetag.vim'
 
 Plugin 'nathanaelkane/vim-indent-guides'
-
-Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -106,8 +104,6 @@ autocmd BufRead,BufNewFile *.mjs :set filetype=typescript
 autocmd BufRead,BufNewFile *.ts :set filetype=typescript
 " autocmd FileType typescript :set makeprg=tsc
 
-autocmd BufWritePre *.py execute ':Black'
-
 autocmd BufRead,BufNewFile *.jinja2 :set filetype=jinja2
 
 autocmd BufRead,BufNewFile *.config :set filetype=config
@@ -116,13 +112,13 @@ autocmd BufRead,BufNewFile *.config :set filetype=config
 " unmap <C-y>
 " let g:user_emmet_leader_key='<C-Y>'
 " Set the leader key to ',' which makes the expansion be ',,'
-let g:user_emmet_leader_key=','
+"let g:user_emmet_leader_key=','
 " let g:user_emmet_mode='a'
-let g:user_emmet_install_global = 0
-auto FileType ejs,html,jinja,css EmmetInstall
+" let g:user_emmet_install_global = 0
+" auto FileType ejs,html,jinja,css EmmetInstall
 
-" set leader key to comma
-let mapleader = ","
+" set leader key to space
+let mapleader = " "
 
 " rename current file, via Gary Bernhardt
 function! RenameFile()
@@ -196,8 +192,12 @@ set nobackup
 set tabstop=2
 set shiftwidth=0
 set expandtab
+set splitright
 " All line endings are unix
 set fileformat=unix
+set nowrapscan
+
+set complete=.,w,b,kspell
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
@@ -212,7 +212,7 @@ set laststatus=2
 if has('statusline')
   "set statusline=%<%f
   "set statusline+=%w%h%m%r
-  set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+  set statusline=%<%F\ %Y\ %h%m%r%=%-14.(%l,%c%V%)\ %L\ %P
   " set statusline+=%{fugitive#statusline()}
   " set statusline+=\ [%{getcwd()}]
 endif
@@ -239,6 +239,7 @@ highlight StatusLineNC cterm=None ctermfg=7 ctermbg=0
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=5
 highlight LineNr ctermbg=0 ctermfg=7
 highlight CursorLine cterm=None ctermbg=NONE ctermfg=NONE
+highlight ColorColumn ctermbg=0
 highlight clear CursorLine
 highlight CursorLineNR cterm=None ctermbg=7 ctermfg=0
 " highlight CursorColumn cterm=NONE ctermbg=0 ctermfg=NONE
@@ -265,7 +266,7 @@ set fillchars+=vert:\ ,fold:-
 syntax enable
 
 " Syntax coloring lines that are too long just slows down the world
-set synmaxcol=600
+set synmaxcol=300
 
 " Display tabs at the beginning of a line in Python mode as bad.
 "au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
@@ -278,7 +279,7 @@ set synmaxcol=600
 
 " Shrink the current window to fit the number of lines in the buffer.  Useful
 " for those buffers that are only a few lines
-nmap <silent> ,sw :execute ":resize " . line('$')<cr>
+nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
 
 au BufRead,BufNewFile *.md,*.txt set spell spelllang=en_us
 highlight SpellLocal ctermbg=NONE
@@ -286,4 +287,5 @@ highlight SpellBad ctermbg=NONE cterm=undercurl
 highlight SpellRare ctermbg=NONE cterm=undercurl
 
 " map jk to esc
-:imap jk <Esc>
+" Experiment without jk
+":imap jk <Esc>
