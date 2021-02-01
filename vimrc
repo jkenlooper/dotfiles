@@ -50,6 +50,9 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 highlight IndentGuidesOdd ctermbg=NONE
 highlight IndentGuidesEven ctermbg=0
 
+highlight IncSearch cterm=None ctermfg=0 ctermbg=7
+highlight Search cterm=underline ctermfg=None ctermbg=0
+
 highlight SignColumn ctermbg=0
 highlight GitGutterAdd ctermbg=0
 highlight GitGutterChange ctermbg=0
