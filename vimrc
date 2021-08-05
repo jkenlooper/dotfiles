@@ -23,6 +23,8 @@ Plugin 'docunext/closetag.vim'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 
+Plugin 'psf/black'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,8 +52,8 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 highlight IndentGuidesOdd ctermbg=NONE
 highlight IndentGuidesEven ctermbg=0
 
-highlight IncSearch cterm=None ctermfg=0 ctermbg=7
-highlight Search cterm=underline ctermfg=None ctermbg=0
+highlight IncSearch cterm=None ctermfg=0 ctermbg=9
+highlight Search cterm=underline ctermfg=0 ctermbg=9
 
 highlight SignColumn ctermbg=0
 highlight GitGutterAdd ctermbg=0
@@ -110,6 +112,8 @@ autocmd BufRead,BufNewFile *.ts :set filetype=typescript
 autocmd BufRead,BufNewFile *.jinja2 :set filetype=jinja2
 
 autocmd BufRead,BufNewFile *.config :set filetype=config
+
+autocmd BufRead,BufNewFile *.sh :set filetype=bash
 
 " emmet-vim
 " unmap <C-y>
@@ -269,7 +273,7 @@ set fillchars+=vert:\ ,fold:-
 syntax enable
 
 " Syntax coloring lines that are too long just slows down the world
-set synmaxcol=300
+set synmaxcol=3000
 
 " Display tabs at the beginning of a line in Python mode as bad.
 "au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
@@ -292,3 +296,7 @@ highlight SpellRare ctermbg=NONE cterm=undercurl
 " map jk to esc
 " Experiment without jk
 ":imap jk <Esc>
+
+" autosave on text change for these files. This is handy when using some other
+" software that is actively monitoring these files for changes (OBS for example).
+autocmd BufNewFile,BufRead *.chat.txt :autocmd TextChanged,TextChangedI <buffer> silent write

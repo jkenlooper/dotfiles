@@ -170,13 +170,13 @@ export TODOTXT_CFG_FILE
 if [ "$TERM" = "linux" ]; then
 
 echo -en "\e]P0000000" #black      #base02
-echo -en "\e]P8111111" #brblack    #base03
+echo -en "\e]P89A9A9A" #brblack    #base03
 
 echo -en "\e]P1C28265" #red        #red
 echo -en "\e]P9DB9372" #brred      #orange
 
-echo -en "\e]P54E5B61" #magenta    #magenta
-echo -en "\e]PD63727A" #brmagenta  #violet
+echo -en "\e]P5C28265" #magenta    #magenta
+echo -en "\e]PDDB9372" #brmagenta  #violet
 
 echo -en "\e]P23D91CC" #green      #green
 echo -en "\e]PA3D91CC" #brgreen    #base01
@@ -226,3 +226,5 @@ export NVM_DIR
 
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
