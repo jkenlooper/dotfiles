@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+trap "rm -f ${HOME}/.tmp_timer.txt" EXIT
 
 # This is a simple pomodoro timer that updates a tmp file with the remaining
 # pomodoro time.
@@ -17,10 +19,10 @@ TASK=${TASK:0:34}
 
 # Every minute update the txt file with the current todo and amount of time
 # left.
-while test $TIMER -gt -1; do
-  echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
+echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
+while test $TIMER -gt 0; do
   cat ${HOME}/.tmp_timer.txt
   TIMER=$(($TIMER-1))
   sleep 1m
+  echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
 done
-rm ${HOME}/.tmp_timer.txt;
