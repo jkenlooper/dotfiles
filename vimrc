@@ -115,37 +115,29 @@ autocmd BufRead,BufNewFile *.config :set filetype=config
 
 autocmd BufRead,BufNewFile *.sh :set filetype=bash
 
-" emmet-vim
-" unmap <C-y>
-" let g:user_emmet_leader_key='<C-Y>'
-" Set the leader key to ',' which makes the expansion be ',,'
-"let g:user_emmet_leader_key=','
-" let g:user_emmet_mode='a'
-" let g:user_emmet_install_global = 0
-" auto FileType ejs,html,jinja,css EmmetInstall
-
 " set leader key to space
 let mapleader = " "
 
-" rename current file, via Gary Bernhardt
-function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'))
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
-endfunction
-map <leader>N :call RenameFile()<cr>
+" Just use builtin file explorer instead :Explore
+"" rename current file, via Gary Bernhardt
+" function! RenameFile()
+"   let old_name = expand('%')
+"   let new_name = input('New file name: ', expand('%'))
+"   if new_name != '' && new_name != old_name
+"     exec ':saveas ' . new_name
+"     exec ':silent !rm ' . old_name
+"     redraw!
+"   endif
+" endfunction
+" map <leader>N :call RenameFile()<cr>
 
 " Sort the rules with css-declaration-sorter, apply format fixes with cssfmt
 " npm install -g cssfmt;
 " npm install -g css-declaration-sorter@v2.1.0
-function! CleanupCSS()
-  exec ':0,$!cssfmt | cssdeclsort --order concentric-css'
-endfunction
-map <leader>c :call CleanupCSS()<cr>
+" function! CleanupCSS()
+"   exec ':0,$!cssfmt | cssdeclsort --order concentric-css'
+" endfunction
+" map <leader>c :call CleanupCSS()<cr>
 
 set backspace=indent,eol,start
 set hidden
@@ -284,18 +276,18 @@ set synmaxcol=3000
 " au FileType javascript setl nocindent
 
 
-" Shrink the current window to fit the number of lines in the buffer.  Useful
-" for those buffers that are only a few lines
-nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
-
 au BufRead,BufNewFile *.md,*.txt set spell spelllang=en_us
 highlight SpellLocal ctermbg=NONE
 highlight SpellBad ctermbg=NONE cterm=undercurl
 highlight SpellRare ctermbg=NONE cterm=undercurl
 
-" map jk to esc
-" Experiment without jk
-":imap jk <Esc>
+" Force using motions instead of holding down hjkl keys.
+noremap hh <nop>
+noremap jj <nop>
+noremap kk <nop>
+noremap ll <nop>
+" Kill practical use of leader keys so noremap of hjkl will be more responsive
+set timeoutlen=100
 
 " autosave on text change for these files. This is handy when using some other
 " software that is actively monitoring these files for changes (OBS for example).
