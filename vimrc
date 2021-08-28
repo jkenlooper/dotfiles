@@ -276,10 +276,12 @@ set synmaxcol=3000
 " au FileType javascript setl nocindent
 
 
+set nospell
 au BufRead,BufNewFile *.md,*.txt set spell spelllang=en_us
-highlight SpellLocal ctermbg=NONE
 highlight SpellBad ctermbg=NONE cterm=undercurl
+highlight SpellCap ctermbg=NONE cterm=undercurl
 highlight SpellRare ctermbg=NONE cterm=undercurl
+highlight SpellLocal ctermbg=NONE cterm=undercurl
 
 " Force using motions instead of holding down hjkl keys.
 noremap hh <nop>
