@@ -103,8 +103,8 @@ let g:polyglot_disabled = ['graphql']
 
 " Set filetype as typescript for javascript so jsdoc comments have better syntax
 " coloring.
-autocmd BufRead,BufNewFile *.js :set filetype=typescript
-autocmd BufRead,BufNewFile *.mjs :set filetype=typescript
+autocmd BufRead,BufNewFile *.js :set filetype=javascript
+autocmd BufRead,BufNewFile *.mjs :set filetype=javascript
 
 autocmd BufRead,BufNewFile *.ts :set filetype=typescript
 " autocmd FileType typescript :set makeprg=tsc
@@ -114,6 +114,10 @@ autocmd BufRead,BufNewFile *.jinja2 :set filetype=jinja2
 autocmd BufRead,BufNewFile *.config :set filetype=config
 
 autocmd BufRead,BufNewFile *.sh :set filetype=bash
+
+autocmd BufRead,BufNewFile *.nginx.conf.template :set filetype=nginx
+
+autocmd BufRead,BufNewFile *.dockerfile :set filetype=dockerfile
 
 " set leader key to space
 let mapleader = " "
