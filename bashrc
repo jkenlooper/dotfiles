@@ -36,9 +36,10 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+color_prompt=yes
+#case "$TERM" in
+#    xterm-color) color_prompt=yes;;
+#esac
 
 # The terminal display - "user[path](gitbranch)$ " where gitbranch only shows up in a git repo
 parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'; }
@@ -57,9 +58,9 @@ PROMPT_COMMAND=$(
     fi
 
     if((_temp_var == 0)); then
-        PS1="\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\]: "
+        PS1="\n\e[0;37m\]\e[40m\]\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\] \n"
     else
-        PS1="\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\]\[\e[33m\]|ERROR:$_temp_var|\[\e[0m\]: "
+        PS1="\n\e[0;37m\]\e[40m\]\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[0m\] \n\[\e[33m\]\e[7;31m\] ERROR:$_temp_var \[\e[0m\] "
     fi
 EOF
 )

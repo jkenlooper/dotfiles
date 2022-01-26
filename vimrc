@@ -40,8 +40,10 @@ filetype plugin indent on    " required
 
 " Use true color
 " https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" Be boring and only use 16 colors
+set t_Co=16
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
