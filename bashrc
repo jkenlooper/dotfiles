@@ -58,9 +58,9 @@ PROMPT_COMMAND=$(
     fi
 
     if((_temp_var == 0)); then
-        PS1="\[\e[00m\]\n\[\e[37m\]\[\e[40m\]\h \[\e[32m\]\w\[\e[00m\]\[\e[34m\]$(parse_git_branch)\[\e[37m\]\[\e[40m\]\n^ \[\e[00m\] "
+        PS1="\[\e[00m\]\n\[\e[37m\]\[\e[40m\]\h \[\e[32m\]\w\[\e[00m\]\[\e[34m\]$(parse_git_branch)\[\e[00m\]\n\[\e[37m\]\[\e[40m\]^ \[\e[00m\] "
     else
-        PS1="\[\e[00m\]\n\[\e[33m\]\[\e[7;31m\] ERROR:$_temp_var \[\e[00m\]\n\[\e[37m\]\[\e[40m\]\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[37m\]\[\e[40m\]\n^ \[\e[00m\] "
+        PS1="\[\e[00m\]\n\[\e[33m\]\[\e[7;31m\] ERROR:$_temp_var \[\e[00m\]\n\[\e[37m\]\[\e[40m\]\h \[\e[32m\]\w\[\e[0m\]\[\e[34m\]$(parse_git_branch)\[\e[00m\]\n\[\e[37m\]\[\e[40m\]^ \[\e[00m\] "
     fi
 EOF
 )
