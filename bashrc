@@ -44,7 +44,7 @@ color_prompt=yes
 # The terminal display - "user[path](gitbranch)$ " where gitbranch only shows up in a git repo
 parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'; }
 
-PROMPT_DIRTRIM=3
+PROMPT_DIRTRIM=5
 
 PROMPT_COMMAND=$(
     cat<<-'EOF'
@@ -224,8 +224,5 @@ fi
 export NVM_DIR
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"

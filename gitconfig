@@ -1,24 +1,24 @@
 [alias]
   st = status
   co = checkout
-	graphlog = log --graph --color --decorate --pretty=oneline --abbrev-commit
+  graphlog = log --graph --color --decorate --pretty=oneline --abbrev-commit
 
 [color]
   status = true
-	ui = true
+  ui = true
 
 [core]
   excludesFile = ~/.git_global_ignore
-	attributesfile = ~/.gitattributes
+  attributesfile = ~/.gitattributes
 
 [diff "image"]
-	command = ~/bin/git-imgdiff
+  command = ~/bin/git-imgdiff
 
 [diff "mincss"]
-	textconv = cssunminifier
+  textconv = cssunminifier
 
 [diff "minjs"]
-	textconv = uglifyjs --beautify --
+  textconv = uglifyjs --beautify --
 [user]
-	name = Jake Hickenlooper
-	email = jake@weboftomorrow.com
+  name = Jake Hickenlooper
+  email = jake@weboftomorrow.com

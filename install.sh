@@ -1,7 +1,22 @@
 #!/bin/bash
 
 # Create aliases for dot files in HOME replacing any existing
-for f in {alacritty.yml,bash_aliases,bashrc,editorconfig,gitattributes,gitconfig,profile,todo.actions.d,todo.cfg,tmux.conf,vim,vimrc,Xresources}; do
+dotfiles="
+alacritty.yml
+bash_aliases
+bashrc
+editorconfig
+gitattributes
+gitconfig
+profile
+todo.actions.d
+todo.cfg
+tmux.conf
+vim
+vimrc
+Xresources
+"
+for f in $dotfiles; do
   # Remove old symbolic link if there.
 	if [ -L $HOME/.$f ]; then
     rm $HOME/.$f;
