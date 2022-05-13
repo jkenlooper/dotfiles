@@ -185,6 +185,7 @@ set relativenumber " Use relative line numbers. Current line is still in status 
 set number " Show current line number
 " set norelativenumber
 " au BufReadPost,BufNewFile * set number
+let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
 
 set mouse=
 set autoindent
