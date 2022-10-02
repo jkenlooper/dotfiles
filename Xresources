@@ -19,6 +19,7 @@ XTerm.fullscreen: true
 XTerm.fastScroll: true
 !XTerm.maximized: true
 !XTerm.toolBar: false
+XTerm.selectToClipboard: true
 
 ! May need to set faceSize in /etc/X11/app-defaults/XTerm
 XTerm.vt100.faceSize: 14

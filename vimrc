@@ -44,6 +44,7 @@ filetype plugin indent on    " required
 
 " Be boring and only use 16 colors
 set t_Co=16
+set notermguicolors
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
