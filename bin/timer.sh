@@ -23,6 +23,6 @@ echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
 while test $TIMER -gt 0; do
   cat ${HOME}/.tmp_timer.txt
   TIMER=$(($TIMER-1))
-  sleep 1m
+  sleep 60
   echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
 done
