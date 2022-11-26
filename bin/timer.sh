@@ -15,14 +15,24 @@ TASK=${TASK#${TASKNUMBER} }
 echo "Starting timer for task: ${TASK}"
 
 # Truncate it so the time left is at the end.
-TASK=${TASK:0:34}
+#TASK=${TASK:0:34}
 
-# Every minute update the txt file with the current todo and amount of time
-# left.
-echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
+printf "\n%s" "${TASK}" > ${HOME}/session.chat.txt
 while test $TIMER -gt 0; do
-  cat ${HOME}/.tmp_timer.txt
+  printf " :%s" "$TIMER" > ${HOME}/.tmp_timer.txt
   TIMER=$(($TIMER-1))
   sleep 60
-  echo "${TASK}... ${TIMER}" > ${HOME}/.tmp_timer.txt
 done
+printf " :%s" "$TIMER" > ${HOME}/.tmp_timer.txt
+
+message_ui() {
+  if hash terminal-notifier 2>/dev/null; then
+    terminal-notifier -message "$1" -timeout 7 -activate com.apple.Terminal
+  elif hash notify-send 2>/dev/null; then
+    notify-send --urgency critical --expire-time=7000 "$1";
+  fi
+  tmux display-message "$1";
+}
+
+message_ui "Timer finished: ${TASK}"
+sleep 10

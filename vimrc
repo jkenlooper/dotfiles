@@ -302,3 +302,7 @@ set timeoutlen=100
 " autosave on text change for these files. This is handy when using some other
 " software that is actively monitoring these files for changes (OBS for example).
 autocmd BufNewFile,BufRead *.chat.txt :autocmd TextChanged,TextChangedI <buffer> silent write
+
+" Allow quickly writing a message to the session.chat.txt
+" nnoremap <C-m> :terminal ++hidden tm<cr>
+nnoremap <C-m> :terminal ++hidden tmux split-window -v -l 3 "vim + --clean ~/session.chat.txt"<cr>
