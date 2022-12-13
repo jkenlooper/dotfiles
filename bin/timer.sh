@@ -34,6 +34,5 @@ message_ui() {
   tmux display-message "$1";
 }
 
-message_ui "Timer finished: ${task}"
-sleep 10
+message_ui "$(date '+%H:%M') Timer finished: ${task}"
 printf "\n  %s" "$(date '+%H:%M')" >> "$HOME/session.chat.txt"
