@@ -1,42 +1,43 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" The vimrc for Jake Hickenlooper. Use at your own risk ;)
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" UPKEEP due: "2023-10-25" label: "vim-plug" interval: "+8 months"
+" Auto download and load vim-plug after validating the checksum.
+" https://github.com/junegunn/vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!mkdir -p '.data_dir.'/autoload'
+  silent execute '!wget -q -O '.data_dir.'/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/0.11.0/plug.vim'
+  execute '!echo a90d94d8ff8bdb78583ba2d5f648e084255c1e78a1362195542d87a6b504d27d8a57cbe9436541c3b43c4d483f10175e3293179068bba6a807f8a874c713d313  '.data_dir.'/autoload/plug.vim | sha512sum -c || (mv '.data_dir.'/autoload/plug.vim '.data_dir.'/autoload/plug.vim.INVALID && exit 1)'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Autocompletion
-"Plugin 'ajh17/VimCompletesMe'
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
-Plugin 'airblade/vim-gitgutter'
+call plug#begin()
 
-" Plugin 'mattn/emmet-vim'
-" Plugin 'scrooloose/nerdtree'
-Plugin 'dense-analysis/ale'
-Plugin 'tpope/vim-surround'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'Quramy/tsuquyomi'
+Plug 'mhinz/vim-signify', { 'commit': 'a05e63ba72411977f5087c27c1564c9287bfab66' }
 
-Plugin 'sheerun/vim-polyglot'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'docunext/closetag.vim'
+" TODO Pin plugins to specific commits
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Quramy/tsuquyomi'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
+Plug 'leafgarland/typescript-vim'
+Plug 'docunext/closetag.vim'
 
-Plugin 'psf/black'
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'psf/black'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+set updatetime=100
 
 " Use true color
 " https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/
@@ -74,19 +75,25 @@ highlight ALEWarningLine ctermbg=NONE
 let g:ale_set_highlights = 1
 " for performance reasons set this to a longer delay
 let g:ale_echo_delay = 500
+" let g:ale_echo_cursor = 1
+" let g:ale_cursor_detail = 0
+" augroup ale_hover_cursor
+"   autocmd!
+"   autocmd CursorHold * ALEHover
+" augroup END
 
 let g:ale_linters = {
 \   'markdown': ['prettier'],
 \   'html': ['prettier'],
-\   'typescript': ['prettier'],
-\   'javascript': ['prettier'],
+\   'typescript': ['deno'],
+\   'javascript': ['deno'],
 \   'css': ['prettier'],
 \}
 let g:ale_fixers = {
 \   'markdown': ['prettier'],
 \   'html': ['prettier'],
-\   'typescript': ['prettier'],
-\   'javascript': ['prettier'],
+\   'typescript': ['deno'],
+\   'javascript': ['deno'],
 \   'css': ['prettier'],
 \}
 let g:ale_pattern_options = {
@@ -201,7 +208,8 @@ set shiftwidth=0
 set expandtab
 set splitright
 " All line endings are unix
-set fileformat=unix
+" vim-plug complains when installing plugins when this is set?
+" set fileformat=unix
 set nowrapscan
 
 set complete=.,w,b,kspell
@@ -259,6 +267,15 @@ augroup CursorLine
   " au WinLeave * setlocal nocursorcolumn
 augroup END
 
+highlight SignifySignAdd    ctermfg=white  guifg=#ffffff cterm=NONE gui=NONE
+highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_change            = '~'
+let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
+
 highlight Folded ctermbg=0
 
 " Set the visual mode highlighting to be less annoying
@@ -269,8 +286,6 @@ highlight MatchParen ctermbg=None cterm=underline ctermfg=None
 " Set the vertical split character to space. Fold after to prevent trailing
 " space removal.
 set fillchars+=vert:\ ,fold:-
-
-syntax enable
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=3000
@@ -304,5 +319,5 @@ set timeoutlen=100
 autocmd BufNewFile,BufRead *.chat.txt :autocmd TextChanged,TextChangedI <buffer> silent write
 
 " Allow quickly writing a message to the session.chat.txt
-" nnoremap <C-m> :terminal ++hidden tm<cr>
-nnoremap <C-m> :terminal ++hidden tmux split-window -v -l 3 "vim + --clean ~/session.chat.txt"<cr>
+" nnoremap <C-k> :terminal ++hidden tm<cr>
+nnoremap <silent> <C-k> :terminal ++hidden tmux split-window -v -l 3 "vim + --clean ~/session.chat.txt"<cr>

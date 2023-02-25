@@ -12,7 +12,6 @@ profile
 todo.actions.d
 todo.cfg
 tmux.conf
-vim
 vimrc
 Xresources
 "
