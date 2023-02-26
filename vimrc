@@ -16,23 +16,48 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
+" vim-polyglot disabled opts need to be set first
+" Fix for #303 issue when opening js files
+let g:polyglot_disabled = ['graphql']
+
 call plug#begin()
 
+" UPKEEP due: "2023-10-25" label: "mhinz/vim-signify" interval: "+8 months"
+" https://github.com/mhinz/vim-signify
 Plug 'mhinz/vim-signify', { 'commit': 'a05e63ba72411977f5087c27c1564c9287bfab66' }
 
-" TODO Pin plugins to specific commits
-Plug 'dense-analysis/ale'
-Plug 'tpope/vim-surround'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'Quramy/tsuquyomi'
+" UPKEEP due: "2023-10-25" label: "ALE" interval: "+8 months"
+" https://github.com/dense-analysis/ale/releases
+Plug 'dense-analysis/ale', { 'commit': '31010ad1d1358f14c7025168f529a0f6e512138e' }
 
-Plug 'sheerun/vim-polyglot'
-Plug 'leafgarland/typescript-vim'
-Plug 'docunext/closetag.vim'
+" UPKEEP due: "2023-10-25" label: "vim-surround" interval: "+8 months"
+" https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround', { 'commit': '3d188ed2113431cf8dac77be61b842acb64433d9' }
 
-Plug 'nathanaelkane/vim-indent-guides'
+" UPKEEP due: "2023-10-25" label: "editorconfig-vim" interval: "+8 months"
+" https://github.com/editorconfig/editorconfig-vim
+Plug 'editorconfig/editorconfig-vim', { 'commit': '1d54632f7fcad38df8e428f349bc58b15af4b206' }
 
-Plug 'psf/black'
+" Using Deno and ALE instead.
+" Plug 'Quramy/tsuquyomi'
+" Using vim-polyglot
+" Plug 'leafgarland/typescript-vim'
+
+" UPKEEP due: "2023-10-25" label: "vim-polyglot" interval: "+8 months"
+" https://github.com/sheerun/vim-polyglot
+Plug 'sheerun/vim-polyglot', { 'commit': 'bc8a81d3592dab86334f27d1d43c080ebf680d42' }
+
+" UPKEEP due: "2025-02-26" label: "closetag.vim" interval: "+2 years"
+" https://github.com/docunext/closetag.vim
+Plug 'docunext/closetag.vim', { 'commit': 'a52525b7220bb28309d1905108e9e8914fdb4112' }
+
+" UPKEEP due: "2023-10-25" label: "preservim/vim-indent-guides" interval: "+8 months"
+" https://github.com/preservim/vim-indent-guides
+Plug 'preservim/vim-indent-guides', { 'commit': '9a106c73f64b16f898276ca87cd55326a2e5cf4c' }
+
+" UPKEEP due: "2023-10-25" label: "psf/black" interval: "+8 months"
+" https://github.com/psf/black
+Plug 'psf/black', { 'commit': '4bb6e4f64ab3820ab9fae6716cd59479d34b7edf' }
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -107,9 +132,6 @@ let g:ale_lint_on_enter = 1
 
 " let g:typescript_compiler_binary = 'npm run tsc --'
 let g:typescript_compiler_options = '--noEmit --allowJs'
-
-" Fix for #303 issue when opening js files
-let g:polyglot_disabled = ['graphql']
 
 " Set filetype as typescript for javascript so jsdoc comments have better syntax
 " coloring.
@@ -298,6 +320,8 @@ set synmaxcol=3000
 " au FileType javascript setl fen
 " au FileType javascript setl nocindent
 
+" Don't parse modelines (google "vim modeline vulnerability").
+set nomodeline
 
 set nospell
 au BufRead,BufNewFile *.md,*.txt set spell spelllang=en_us
@@ -306,13 +330,14 @@ highlight SpellCap ctermbg=NONE cterm=undercurl
 highlight SpellRare ctermbg=NONE cterm=undercurl
 highlight SpellLocal ctermbg=NONE cterm=undercurl
 
-" Force using motions instead of holding down hjkl keys.
-noremap hh <nop>
-noremap jj <nop>
-noremap kk <nop>
-noremap ll <nop>
-" Kill practical use of leader keys so noremap of hjkl will be more responsive
-set timeoutlen=100
+" I no longer hold down hjkl keys.
+" " Force using motions instead of holding down hjkl keys.
+" noremap hh <nop>
+" noremap jj <nop>
+" noremap kk <nop>
+" noremap ll <nop>
+" " Kill practical use of leader keys so noremap of hjkl will be more responsive
+" set timeoutlen=100
 
 " autosave on text change for these files. This is handy when using some other
 " software that is actively monitoring these files for changes (OBS for example).
