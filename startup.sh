@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S bash -o errexit
 
 # After logging in run this script to initialize
 
