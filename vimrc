@@ -301,7 +301,7 @@ let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_de
 highlight Folded ctermbg=0
 
 " Set the visual mode highlighting to be less annoying
-highlight Visual cterm=NONE ctermfg=NONE ctermbg=0
+highlight Visual cterm=None ctermfg=0 ctermbg=8
 
 highlight MatchParen ctermbg=None cterm=underline ctermfg=None
 
