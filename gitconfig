@@ -13,12 +13,3 @@
 
 [diff "image"]
   command = ~/bin/git-imgdiff
-
-[diff "mincss"]
-  textconv = cssunminifier
-
-[diff "minjs"]
-  textconv = uglifyjs --beautify --
-[user]
-  name = Jake Hickenlooper
-  email = jake@weboftomorrow.com

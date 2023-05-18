@@ -1,4 +1,27 @@
-#!/usr/bin/env -S bash -o errexit
+#!/usr/bin/env -S sh -o errexit
+
+include_gitconfig() {
+  command -v git || (echo "Requires 'git' command to be available" && exit 1)
+  script_dir="$(dirname "$(realpath "$0")")"
+
+  existing_git_config_user="$(git config --global user.name || printf "")"
+  echo "Enter git config user name: [$existing_git_config_user]"
+  read startup_git_config_user_name
+
+  if [ -n "$startup_git_config_user_name" ]; then
+    git config --global --replace-all user.name "$startup_git_config_user_name"
+  fi
+
+  existing_git_config_user_email="$(git config --global user.email || printf "")"
+  echo "Enter git config user email: [$existing_git_config_user_email]"
+  read startup_git_config_user_email
+
+  if [ -n "$startup_git_config_user_email" ]; then
+    git config --global --replace-all user.email "$startup_git_config_user_email"
+  fi
+
+  git config --global --replace-all include.path "$script_dir/gitconfig"
+}
 
 # Create aliases for dot files in HOME replacing any existing
 dotfiles="
@@ -7,7 +30,6 @@ bash_aliases
 bashrc
 editorconfig
 gitattributes
-gitconfig
 profile
 todo.actions.d
 todo.cfg
@@ -27,6 +49,7 @@ for f in $dotfiles; do
 	ln -s "$PWD/$f" "$HOME/.$f";
 done;
 
+include_gitconfig
 
 # Create aliases in HOME/bin replacing any existing
 mkdir -p "$HOME/bin"
